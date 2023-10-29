@@ -44,12 +44,13 @@ export const PlayList = ({ city }) => {
   return (
     <View
       style={{
+        width:290,
         display: 'flex',
         backgroundColor: '#ffffff',
         padding: 10,
-        width: 250,
         borderRadius: 10,
         marginTop: 40,
+        marginHorizontal:20,
       }}
     >
       {list?.map((item, index) => {

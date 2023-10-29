@@ -1,17 +1,17 @@
-import { useCallback, useEffect } from 'react';
+import { useEffect } from 'react';
 import { View, TouchableOpacity, StyleSheet, Image, ToastAndroid } from 'react-native';
 import { mediaPlayer } from './../../mediaPlayer/mediaPlayer';
 
 export function ButtonPlay({ store, changeStore, startPlay }) {
   const { play, sound, loud, city, codeAudio } = store;
 
-  const openSound = useCallback(async () => {
+  const openSound = async () => {
     changeStore((prev) => ({ ...prev, loud: true }));
     const { sound } = await mediaPlayer({ city, codeAudio });
     await sound.playAsync();
 
     changeStore((prev) => ({ ...prev, play: true, sound }));
-  }, []);
+  };
 
   const playStartEndStop = async () => {
     try {

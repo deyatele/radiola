@@ -14,21 +14,24 @@ export const ModalWindow = ({ changeCity, city, setCodeAudio, codeAudio, changeO
   };
   return (
     <View style={styles.container}>
-      <View style={{ top: '10%', left: '50%', transform: [{ translateX: -85 }] }}>
-        <Text style={{ color: '#ffffff', fontSize: 20 }}>Выбор потока</Text>
-        <View style={{ top: '10%' }}>
-          <Select value={codeAudio} changeSelect={setCodeAudio} data={dataStream} />
-        </View>
-      </View>
-      <View style={{ top: '23%', left: '50%', transform: [{ translateX: -85 }] }}>
-        <Text style={{ color: '#ffffff', fontSize: 20 }}>Выбор города</Text>
-        <View style={{ top: '10%' }}>
-          <Select value={city} changeSelect={changeCity} data={dataCity} />
-        </View>
-      </View>
       <TouchableOpacity style={styles.closeModal} onPress={changeOpenHandler}>
-        <Text style={{ color: '#ffffff', fontSize: 32 }}>X</Text>
-      </TouchableOpacity>
+          <Text style={{ color: '#ffffff', fontSize: 32 }}>X</Text>
+        </TouchableOpacity>
+      <View style={styles.wrapper}>
+        <View style={styles.containerSetting}>
+          <Text style={{ color: '#ffffff', fontSize: 20 }}>Выбор потока</Text>
+          <View style={{ marginTop: 10 }}>
+            <Select value={codeAudio} changeSelect={setCodeAudio} data={dataStream} />
+          </View>
+        </View>
+        <View style={styles.containerSetting}>
+          <Text style={{ color: '#ffffff', fontSize: 20 }}>Выбор города</Text>
+          <View style={{ marginTop: 10 }}>
+            <Select value={city} changeSelect={changeCity} data={dataCity} />
+          </View>
+        </View>
+        
+      </View>
     </View>
   );
 };
@@ -40,10 +43,28 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: '#0a0a0a',
     top: 0,
+    zIndex: 3,
+    display:'flex',
+    alignItems:'center',
+    padding:50
+  },
+  wrapper: {
+    maxWidth:500,
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-evenly',
+    maxWidth:600
   },
   closeModal: {
     position: 'absolute',
-    top: 25,
-    right: 25,
+    top: 0,
+    right: 20,
+  },
+  containerSetting: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 20,
+    marginBottom: 30,
   },
 });

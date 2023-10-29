@@ -14,7 +14,7 @@ export const Select = ({ value, changeSelect, data }) => {
   };
 
   return (
-    <View style={[styles.container, !isOpen && { height: 10 + 50 * Object.keys(data).length }]}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={openAndClose}>
         <View style={[styles.item, isOpen && { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }]}>
           <Text>{data[value]} </Text>
@@ -23,9 +23,10 @@ export const Select = ({ value, changeSelect, data }) => {
       </TouchableOpacity>
       <View style={[styles.dropdown, isOpen && { display: 'flex' }]}>
         {Object.keys(data).map((key, indx, arr) => {
+          
           return (
             <TouchableOpacity key={key} onPress={() => changeHandler(key)}>
-              <Text style={[styles.textItem, indx === arr.length - 1 && { marginBottom: 0 }]}>{data[key]}</Text>
+              <Text style={[styles.textItem, indx===arr.length-1&&{marginBottom:0}]}>{data[key]}</Text>
             </TouchableOpacity>
           );
         })}
@@ -36,7 +37,7 @@ export const Select = ({ value, changeSelect, data }) => {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
+    position: 'relative',
     fontSize: 20,
     marginTop: 5,
   },
@@ -52,13 +53,14 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     display: 'none',
+    position:'absolute',
     width: 170,
     backgroundColor: '#fff',
-    marginBottom: 0,
+    marginTop:35,
     padding: 10,
-    // paddingTop:13,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+    zIndex:100
   },
   textItem: {
     marginBottom: 10,
